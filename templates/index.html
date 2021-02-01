@@ -1,57 +1,441 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>NLP Playground &mdash; A website to play with NLP task solutions</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="A website to play with NLP task solutions" />
+	<meta name="keywords" content="natural language processing, nlp, nlp demo, nlp projects, natural language processing projects" />
+	<meta name="author" content="Nagarjun Suresh Avaraddy" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+	<!--
+	//////////////////////////////////////////////////////
 
-<body>
+	FREE HTML5 TEMPLATE
+	DESIGNED & DEVELOPED by FreeHTML5.co
 
-    <div style="color:blue">
-        <form action="{{ url_for('predict')}}" method="post">
-            
-            <h2>Predictive analysis</h2>
-            
-            <h3>Year</h3>
-            <input id="first" name="Year" type="number">
-            
-            <h3>What is the Showroom Price?(In lakhs)</h3>
-            <br>
-            <input id="second" name="Present_Price" required="required">
-            
-            <h3>How Many Kilometers Drived?</h3>
-            <input id="third" name="Kms_Driven" required="required">
-            
-            <h3>How much owners previously had the car(0 or 1 or 3) ?</h3>
-            <br><input id="fourth" name="Owner" required="required">
-            
-            <h3>What Is the Fuel type?</h3><br>
-            <select name="Fuel" id="fuel" required="required">
-                <option value="Petrol">Petrol</option>
-                <option value="Diesel">Diesel</option>
-                <option value="Diesel">CNG</option>
-            </select>
-            
-            <h3>Are you A Dealer or Individual</h3><br>
-            <select name="Seller_Type" id="resea" required="required">
-                <option value="Dealer">Dealer</option>
-                <option value="Individual">Individual</option>
-            </select>
-            
-            <h3>Transmission type</h3><br><select name="Transmission" id="research" required="required">
-                <option value="Manual">Manual Car</option>
-                <option value="Automatic">Automatic Car</option>
-            </select>
-            
-            <br><br><button id="sub" type="submit">Calculate the Selling Price</button><br>
-         </form>
-     
-     <br><br><h3>{{ prediction_text }}<h3>
-    
-    </div>
+	Website: 		http://freehtml5.co/
+	Email: 			info@freehtml5.co
+	Twitter: 		http://twitter.com/fh5co
+	Facebook: 		https://www.facebook.com/fh5co
 
-</body>
+	//////////////////////////////////////////////////////
+	 -->
 
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,800" rel="stylesheet">	 -->
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="/static/css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="/static/css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="/static/css/bootstrap.css">
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="/static/css/flexslider.css">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="/static/css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="/static/js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="/static/js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+	<body>
+
+	<div class="fh5co-loader"></div>
+
+	<div id="page">
+	<nav class="fh5co-nav" role="navigation">
+		<div class="top-menu">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-2">
+						<div id="fh5co-logo"><a href="index.html">NLP<span>.</span> PlayGround</a></div>
+					</div>
+					<div class="col-xs-10 text-right menu-1">
+						<ul>
+							<li class="active"><a href="index.html">Home</a></li>
+							<li><a href="portfolio.html">Portfolio</a></li>
+							<li><a href="demos.html">Demos</a></li>
+							<li><a href="blog.html">Blog</a></li>
+							<li><a href="about.html">About</a></li>
+							<li><a href="contact.html">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</nav>
+
+	<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t js-fullheight">
+						<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeInUp">
+							<h1> A Playground for Natural Language Processing Practitioners - and a Professional Portfolio</h1>
+							<h2>Authored by <a href="https://www.linkedin.com/in/nagarjun-s-avaraddy/" target="_blank">Nagarjun S A</a></h2>
+							<p><a class="btn btn-primary btn-lg btn-demo" href="demos.html"></i> View Demos </a> <a class="btn btn-primary btn-lg btn-learn"> View Blog </a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!--<div id="fh5co-features">
+		<div class="container">
+			<div class="services-padding">
+				<div class="row">
+					<div class="col-md-4 animate-box">
+						<div class="feature-left">
+							<span class="icon">
+								<i class="icon-hotairballoon"></i>
+							</span>
+							<div class="feature-copy">
+								<h3>Marketing</h3>
+								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
+								<p><a href="#">Learn More <i class="icon-arrow-right22"></i></a></p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-4 animate-box">
+						<div class="feature-left">
+							<span class="icon">
+								<i class="icon-search"></i>
+							</span>
+							<div class="feature-copy">
+								<h3>Search Engine</h3>
+								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
+								<p><a href="#">Learn More <i class="icon-arrow-right22"></i></a></p>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-md-4 animate-box">
+						<div class="feature-left">
+							<span class="icon">
+								<i class="icon-wallet"></i>
+							</span>
+							<div class="feature-copy">
+								<h3>Earn Money</h3>
+								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
+								<p><a href="#">Learn More <i class="icon-arrow-right22"></i></a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="col-md-4 animate-box">
+
+						<div class="feature-left">
+							<span class="icon">
+								<i class="icon-wine"></i>
+							</span>
+							<div class="feature-copy">
+								<h3>Entrepreneur</h3>
+								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
+								<p><a href="#">Learn More <i class="icon-arrow-right22"></i></a></p>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="col-md-4 animate-box">
+						<div class="feature-left">
+							<span class="icon">
+								<i class="icon-genius"></i>
+							</span>
+							<div class="feature-copy">
+								<h3>Stragic Plan</h3>
+								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
+								<p><a href="#">Learn More <i class="icon-arrow-right22"></i></a></p>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-md-4 animate-box">
+						<div class="feature-left">
+							<span class="icon">
+								<i class="icon-chat"></i>
+							</span>
+							<div class="feature-copy">
+								<h3>Support</h3>
+								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
+								<p><a href="#">Learn More <i class="icon-arrow-right22"></i></a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="fh5co-wireframe">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>Wireframe Connects the Underlying Conceptual Structure</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-5 animate-box">
+					<div class="user-frame">
+						<h3>Wireframe Connects the Underlying Conceptual Structure</h3>
+						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+						<span>Louie Jie Mahusay</span><br>
+						<small>CEO, Founder</small>
+					</div>
+				</div>
+				<div class="col-md-7 animate-box">
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+					<blockquote>
+						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+					</blockquote>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts far from the countries Vokalia and Consonantia, there live the blind texts. far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="fh5co-slider">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 animate-box">
+					<div class="heading">
+						<h2>Download Our Latest Free HTML5 Bootstrap Template</h2>
+						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-md-push-1 animate-box">
+					<aside id="fh5co-hero">
+					<div class="flexslider">
+						<ul class="slides">
+					   	<li style="background-image: url(/static/images/img_bg_1.jpg);">
+					   		<div class="overlay-gradient"></div>
+					   		<div class="container-fluid">
+					   			<div class="row">
+						   			<div class="col-md-12 col-md-offset-0 col-md-pull-10 slider-text slider-text-bg">
+						   				<div class="slider-text-inner">
+						   					<div class="desc">
+													<h2>Air Free HTML5 Bootstrap Template</h2>
+													<p>Ink is a free html5 bootstrap and a multi-purpose template perfect for any type of websites. A combination of a minimal and modern design template. The features are big slider on homepage, smooth animation, product listing and many more</p>
+						   					</div>
+						   				</div>
+						   			</div>
+						   		</div>
+					   		</div>
+					   	</li>
+					   	<li style="background-image: url(/static/images/img_bg_2.jpg);">
+					   		<div class="overlay-gradient"></div>
+					   		<div class="container-fluid">
+					   			<div class="row">
+						   			<div class="col-md-12 col-md-offset-0 col-md-pull-10 slider-text slider-text-bg">
+						   				<div class="slider-text-inner">
+						   					<div class="desc">
+													<h2>Ink Free HTML5 Bootstrap Template</h2>
+													<p>Ink is a free html5 bootstrap and a multi-purpose template perfect for any type of websites. A combination of a minimal and modern design template. The features are big slider on homepage, smooth animation, product listing and many more</p>
+						   					</div>
+						   				</div>
+						   			</div>
+						   		</div>
+					   		</div>
+					   	</li>
+					   	<li style="background-image: url(/static/images/img_bg_3.jpg);">
+					   		<div class="overlay-gradient"></div>
+					   		<div class="container-fluid">
+					   			<div class="row">
+						   			<div class="col-md-12 col-md-offset-0 col-md-pull-10 slider-text slider-text-bg">
+						   				<div class="slider-text-inner">
+						   					<div class="desc">
+													<h2>Travel Free HTML5 Bootstrap Template</h2>
+													<p>Ink is a free html5 bootstrap and a multi-purpose template perfect for any type of websites. A combination of a minimal and modern design template. The features are big slider on homepage, smooth animation, product listing and many more</p>
+						   					</div>
+						   				</div>
+						   			</div>
+						   		</div>
+					   		</div>
+					   	</li>
+					  	</ul>
+				  	</div>
+				</aside>
+				</div>
+			</div>
+		</div>
+	</div> -->
+
+	<div id="fh5co-blog">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>Recent Blog Posts</h2>
+					<p>Please go through my most recent posts; feel free to discuss with me on these topics. Chances are my short term memory isn't long.</p>
+				</div>
+			</div>
+			<!--<div class="row">
+				<div class="col-md-4">
+					<div class="fh5co-blog animate-box">
+						<a href="#" class="blog-bg" style="background-image: url(/static/images/blog-1.jpg);"></a>
+						<div class="blog-text">
+							<span class="posted_on">Feb. 15th 2016</span>
+							<h3><a href="#">Photoshoot On The Street</a></h3>
+							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+							<ul class="stuff">
+								<li><i class="icon-heart2"></i>249</li>
+								<li><i class="icon-eye2"></i>1,308</li>
+								<li><a href="#">Read More<i class="icon-arrow-right22"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="fh5co-blog animate-box">
+						<a href="#" class="blog-bg" style="background-image: url(/static/images/blog-2.jpg);"></a>
+						<div class="blog-text">
+							<span class="posted_on">Feb. 15th 2016</span>
+							<h3><a href="#">Surfing at Philippines</a></h3>
+							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+							<ul class="stuff">
+								<li><i class="icon-heart2"></i>249</li>
+								<li><i class="icon-eye2"></i>1,308</li>
+								<li><a href="#">Read More<i class="icon-arrow-right22"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="fh5co-blog animate-box">
+						<a href="#" class="blog-bg" style="background-image: url(/static/images/blog-3.jpg);"></a>
+						<div class="blog-text">
+							<span class="posted_on">Feb. 15th 2016</span>
+							<h3><a href="#">Focus On Uderwater</a></h3>
+							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+							<ul class="stuff">
+								<li><i class="icon-heart2"></i>249</li>
+								<li><i class="icon-eye2"></i>1,308</li>
+								<li><a href="#">Read More<i class="icon-arrow-right22"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>-->
+		</div>
+	</div>
+
+ <div id="fh5co-started">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>Contact Me!</h2>
+					<p>You can contact me to discuss more about demos or posts you would like to see here. You can contribute to make the website better; repo linked below.</p>
+					<p><a class="btn btn-default btn-lg" href = "https://www.linkedin.com/in/nagarjun-s-avaraddy/">LINKEDIN</a>
+						<a class="btn btn-default btn-lg" href = "https://twitter.com/naagarjunsa">TWITTER</a>
+						<a class="btn btn-default btn-lg" href = "https://medium.com/@nagarjunsa09">MEDIUM</a>
+						<a class="btn btn-default btn-lg" href = "https://github.com/naagarjunsa/car-price-prediction">GITHUB REPO</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer id="fh5co-footer" role="contentinfo">
+		<div class="container">
+			<div class="row row-pb-md">
+				<div class="col-md-4 fh5co-widget">
+					<h4>Natural Language Processing PlayGround</h4>
+					<p> This website is created with an intention to document my work and thus contribute back to the NLP community. Any suggestion is welcome.</p>
+				</div>
+				<div class="text-center col-md-2 col-md-push-1 fh5co-widget">
+					<h4>Links</h4>
+					<ul class="fh5co-footer-links">
+						<li><a href="#">Home</a></li>
+						<li><a href="portfolio.html">Portfolio</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="about.html">About</a></li>
+					</ul>
+				</div>
+
+			<!--	<div class="col-md-2 col-md-push-1 fh5co-widget">
+					<h4>Categories</h4>
+					<ul class="fh5co-footer-links">
+						<li><a href="#">Landing Page</a></li>
+						<li><a href="#">Real Estate</a></li>
+						<li><a href="#">Personal</a></li>
+						<li><a href="#">Business</a></li>
+						<li><a href="#">e-Commerce</a></li>
+					</ul>
+				</div>-->
+
+				<div class="col-md-4 text-right col-md-push-1 fh5co-widget">
+					<h4>Contact Information</h4>
+					<ul class="fh5co-footer-links">
+						<li>Samsung Research Institute, <br> Opp. Arena Mall, <br> Doddanekundi, Bangalore 560037</li>
+						<li><a href="mailto:nagarjunsa09@gmail.com">nagarjunsa09@gmail.com</a></li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="row copyright">
+				<div class="col-md-12 text-center">
+					<p>
+						<small class="block">Big Thanks to FreeHTML5 for such a beautiful theme. Appreciated.</small>
+						<small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
+						<small class="block">Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
+					</p>
+					<p>
+						<!--<ul class="fh5co-social-icons">
+							<li><a href="#"><i class="icon-twitter"></i></a></li>
+							<li><a href="#"><i class="icon-facebook"></i></a></li>
+							<li><a href="#"><i class="icon-linkedin"></i></a></li>
+							<li><a href="#"><i class="icon-dribbble"></i></a></li>
+						</ul>-->
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up22"></i></a>
+	</div>
+
+	<!-- jQuery -->
+	<script src="/static/js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="/static/js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="/static/js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="/static/js/jquery.waypoints.min.js"></script>
+	<!-- Flexslider -->
+	<script src="/static/js/jquery.flexslider-min.js"></script>
+	<!-- Main -->
+	<script src="/static/js/main.js"></script>
+
+	</body>
 </html>
