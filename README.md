@@ -1,2 +1,2 @@
-# car-price-prediction-app
-This is Flask Web App which uses a ML Model to predict the resale value of cars.
+# NLP PlayGround
+This is a repo of a web-app which demonstrates NLP tasks, and shares basic intuition for understanding for programmers.
