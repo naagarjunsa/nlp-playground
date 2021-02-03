@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div id="fh5co-content-section">
+  <div class="container">
+    <div class="row row-bottom-padded-md">
+      <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+        <h1>Text Preprocessing</h1>
+        <p>In NLP, Text Preprocessing is the first step in the process of building a solution. You can refer to the blog linked here for a primer.</p>
+      </div>
+    </div>
+  </div>
+ <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="fh5co-team text-center animate-box">
+          <figure>
+            <img src="/static/images/user-1.jpg" alt="user">
+          </figure>
+          <p id="tokenization"> Tokenization <br> <span class="text-mute">NLTK, Spacy </span></p>
+          <blockquote>
+            <p>Tokenization is a step which splits longer strings of text into smaller pieces, or tokens.</p>
+            <a href="{{ url_for('tokenization') }}"> Click here for demo </a>
+          </blockquote>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="fh5co-team text-center animate-box">
+          <figure>
+            <img src="/static/images/user-2.jpg" alt="user">
+          </figure>
+          <p id="normalization">  Normalization <br> <span class="text-mute">NLTK, Spacy</span></p>
+          <blockquote>
+            <p> Normalization generally refers to a series of related tasks meant to put all text on a level playing field.</p>
+            <a href="{{ url_for('normalization') }}"> Click here for demo </a>
+          </blockquote>
+
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="fh5co-team text-center animate-box">
+          <figure>
+            <img src="/static/images/user-3.jpg" alt="user">
+          </figure>
+          <p>Noise Removal <br> <span class="text-mute">NLTK, Spacy</span></p>
+          <blockquote>
+            <p> Noise Removal refers to task of discarding tokens or segments of the text data.</p>
+            <a href="{{ url_for('noise_removal') }}"> Click here for demo </a>
+          </blockquote>
+
+        </div>
+      </div>
+    </div>
+</div>
+<!--
+    <div class="row">
+      <div class="col-md-4">
+        <div class="fh5co-team text-center animate-box">
+          <figure>
+            <img src="/static/images/user-1.jpg" alt="user">
+          </figure>
+          <p>Jean Doe, XYZ Co. <br> <span class="text-mute">Designer</span></p>
+          <blockquote>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          </blockquote>
+
+
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="fh5co-team text-center animate-box">
+          <figure>
+            <img src="/static/images/user-2.jpg" alt="user">
+          </figure>
+          <p>Jean Doe, XYZ Co. <br> <span class="text-mute">Developer</span></p>
+          <blockquote>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          </blockquote>
+
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="fh5co-team text-center animate-box">
+          <figure>
+            <img src="/static/images/user-3.jpg" alt="user">
+          </figure>
+          <p>Jean Doe, XYZ Co. <br> <span class="text-mute">Photographer</span></p>
+          <blockquote>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          </blockquote>
+
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>
+{% endblock %}

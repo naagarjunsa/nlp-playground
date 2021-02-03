@@ -6,40 +6,56 @@ import numpy as np
 import requests
 import jsonify
 from sklearn.preprocessing import StandardScaler
-
+import nltk
 
 app = Flask(__name__)
 
-model = pickle.load(open('models/car_price_prediction.pkl', 'rb'))
-standard_scaler = StandardScaler()
 
 @app.route('/', methods=['GET'])
-def load_home_page():
+@app.route('/index', methods=['GET'])
+def index():
     return render_template('index.html')
 
-@app.route('/index.html', methods=['GET'])
-def load_index_page():
-    return render_template('index.html')
-
-@app.route('/portfolio.html', methods=['GET'])
-def load_portfolio():
+@app.route('/portfolio', methods=['GET'])
+def portfolio():
     return render_template('portfolio.html')
 
-@app.route('/blog.html', methods=['GET'])
-def load_blog_page():
+@app.route('/blog', methods=['GET'])
+def blog():
     return render_template('blog.html')
 
-@app.route('/about.html', methods=['GET'])
-def load_about_page():
+@app.route('/about', methods=['GET'])
+def about():
     return render_template('about.html')
 
-@app.route('/contact.html', methods=['GET'])
-def load_contact_page():
+@app.route('/contact', methods=['GET'])
+def contact():
     return render_template('contact.html')
 
-@app.route('/demos.html', methods=['GET'])
-def load_demo_page():
+@app.route('/demos', methods=['GET'])
+def demos():
     return render_template('demos.html')
+
+@app.route('/demos/preprocessing', methods=['GET'])
+def preprocessing():
+    return render_template('/demos/preprocessing/preprocessing.html')
+
+@app.route('/demos/preprocessing/tokenization', methods=['GET', 'POST'])
+def tokenization():
+    if request.method == 'POST':
+        input = request.form['tokenize_input']
+        words = nltk.word_tokenize(input)
+        return render_template('/demos/preprocessing/tokenization.html', output=str(words), input=input)
+    return render_template('/demos/preprocessing/tokenization.html')
+
+
+@app.route('/demos/preprocessing/normalization', methods=['GET'])
+def normalization():
+    return render_template('/demos/preprocessing/normalization.html')
+
+@app.route('/demos/preprocessing/noise-removal', methods=['GET'])
+def noise_removal():
+    return render_template('/demos/preprocessing/noise-removal.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():

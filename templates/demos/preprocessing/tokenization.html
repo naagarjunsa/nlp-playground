@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div id="fh5co-content-section">
+  <div class="container">
+    <div class="row row-bottom-padded-md">
+      <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+        <h1>Tokenization</h1>
+        <p>Tokenization is a step which splits longer strings of text into smaller pieces, or tokens. Larger chunks of text can be tokenized into sentences, sentences can be tokenized into words, etc. </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="col-md-12 col-md-push-1 animate-box">
+    <div class="row-md-12 row-bottom-padded-md">
+      <form action="{{ url_for('tokenization') }}" method="post">
+      <div class="col-md-4">
+        <div class="form-group">
+          <textarea name="tokenize_input" class="form-control" id="tokenize-input-id" cols="15" rows="7" placeholder="Input text here...">{{ input }}</textarea>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <input type="submit" value="Tokenize" class="btn btn-primary">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <textarea name="tokenize-output" class="form-control" id="tokenize-output-id" cols="15" rows="7" placeholder="Output...">{{ output }}</textarea>
+      </div>
+    </div>
+  </form>
+  </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
